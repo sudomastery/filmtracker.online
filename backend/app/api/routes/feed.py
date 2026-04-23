@@ -9,6 +9,16 @@ from app.schemas.feed import FeedPage
 router = APIRouter(prefix="/feed", tags=["feed"])
 
 
+@router.get("/me", response_model=FeedPage)
+async def get_my_feed(
+    cursor: str | None = Query(None),
+    limit: int = Query(20, ge=1, le=50),
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    return await feed_service.get_user_feed(db, current_user.id, cursor, limit)
+
+
 @router.get("", response_model=FeedPage)
 async def get_feed(
     cursor: str | None = Query(None),

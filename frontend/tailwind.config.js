@@ -28,6 +28,20 @@ export default {
       fontFamily: {
         sans: ['"Inter"', 'system-ui', 'sans-serif'],
       },
+      animation: {
+        'scroll-up':   'scroll-up 25s linear infinite',
+        'scroll-down': 'scroll-down 25s linear infinite',
+      },
+      keyframes: {
+        'scroll-up': {
+          '0%':   { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-50%)' },
+        },
+        'scroll-down': {
+          '0%':   { transform: 'translateY(-50%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
     },
   },
   plugins: [],

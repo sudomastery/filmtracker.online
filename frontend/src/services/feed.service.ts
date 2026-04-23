@@ -7,4 +7,7 @@ export const feedService = {
 
   getGlobalFeed: (cursor?: string, limit = 20) =>
     api.get<FeedPage>('/feed/global', { params: { cursor, limit } }),
+
+  getMyFeed: (cursor?: string, limit = 20) =>
+    api.get<FeedPage>('/feed/me', { params: { cursor, limit } }),
 }
